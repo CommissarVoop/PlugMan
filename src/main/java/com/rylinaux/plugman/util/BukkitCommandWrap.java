@@ -184,7 +184,6 @@ public class BukkitCommandWrap {
                 }
             }
         }
-
         com.mojang.brigadier.CommandDispatcher b;
         try {
             b = (com.mojang.brigadier.CommandDispatcher) bField.get(commandDispatcher);
@@ -192,6 +191,9 @@ public class BukkitCommandWrap {
             e.printStackTrace();
             return;
         }
-        //b.getRoot().removeCommand(command);
+        try {
+            Method removeCommand = b.getClass().getMethod("removeCommand");
+            removeCommand.invoke(command);
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException ignore) {}
     }
 }
