@@ -192,7 +192,6 @@ public class BukkitCommandWrap {
             e.printStackTrace();
             return;
         }
-
-        b.getRoot().removeCommand(command);
+        //b.getRoot().removeCommand(command);
     }
 }
